@@ -1,0 +1,10 @@
+---
+  - name: Add a user
+    hosts: all
+    gather_facts: false
+    tasks:
+      - name: Add a user
+        win_user:
+          name: "myusername"
+          password: "{{ lookup('cypher','secret=password/myusername') }}"
+          state: present
